@@ -1,0 +1,291 @@
+port: 7892
+socks-port: 7891
+mixed-port: 7890
+
+allow-lan: false
+bind-address: 127.0.0.1
+mode: rule
+log-level: info
+
+ipv6: true
+unified-delay: true
+tcp-concurrent: false
+find-process-mode: strict
+
+authentication: []
+skip-auth-prefixes:
+  - 127.0.0.1/32
+  - ::1/128
+
+# =======================
+# DNS（稳定方案）
+# =======================
+dns:
+  enable: true
+  ipv6: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+
+  nameserver:
+    - https://223.5.5.5/dns-query
+    - https://doh.pub/dns-query
+
+  fallback:
+    - https://1.1.1.1/dns-query
+    - https://8.8.8.8/dns-query
+
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr:
+      - 240.0.0.0/4
+      - 0.0.0.0/8
+
+  fake-ip-filter:
+    - +.lan
+    - +.local
+    - time.*.com
+    - ntp.*.com
+    - +.market.xiaomi.com
+    - +.msftconnecttest.com
+    - +.msftncsi.com
+    - +.apple.com
+
+  use-hosts: false
+  use-system-hosts: false
+  respect-rules: true
+
+  default-nameserver:
+    - tls://223.5.5.5
+
+  proxy-server-nameserver:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+
+# =======================
+# 代理订阅
+# =======================
+proxy-providers:
+  流量光机场:
+    type: http
+    url: https://example.com/subscribe?token=REPLACE_ME
+    interval: 3600
+    path: ./providers/liuliangguang.yaml
+    health-check:
+      enable: true
+      interval: 300
+      url: https://cp.cloudflare.com/generate_204
+
+  BestTelegram:
+    type: http
+    url: https://example.com/subscribe?token=REPLACE_ME
+    interval: 3600
+    path: ./providers/besttelegram.yaml
+    health-check:
+      enable: true
+      interval: 300
+      url: https://cp.cloudflare.com/generate_204
+
+  良心云:
+    type: http
+    url: https://example.com/subscribe?token=REPLACE_ME
+    interval: 3600
+    path: ./providers/liangxin.yaml
+    health-check:
+      enable: true
+      interval: 300
+      url: https://cp.cloudflare.com/generate_204
+
+  Mitce:
+    type: http
+    url: https://example.com/subscribe?token=REPLACE_ME
+    interval: 3600
+    path: ./providers/mitce.yaml
+    health-check:
+      enable: true
+      interval: 300
+      url: https://cp.cloudflare.com/generate_204
+
+# =======================
+# 代理组
+# =======================
+proxy-groups:
+  - name: 🚀 节点选择
+    type: select
+    proxies:
+      - ⚡ 自动选择
+      - 🖱️ 手动选择
+      - 🇭🇰 香港
+      - 🇹🇼 台湾
+      - 🇯🇵 日本
+      - 🇺🇸 美国
+      - 🇸🇬 新加坡
+      - 🇰🇷 韩国
+      - DIRECT
+
+  - name: ⚡ 自动选择
+    type: url-test
+    use:
+      - 流量光机场
+      - BestTelegram
+      - 良心云
+      - Mitce
+    url: http://www.gstatic.com/generate_204
+    interval: 600
+
+  - name: 🖱️ 手动选择
+    type: select
+    use:
+      - 流量光机场
+      - BestTelegram
+      - 良心云
+      - Mitce
+
+  - name: 🇭🇰 香港
+    type: url-test
+    use:
+      - 流量光机场
+      - BestTelegram
+      - 良心云
+      - Mitce
+    filter: (?i)(港|HK|Hong)
+    url: http://www.gstatic.com/generate_204
+    interval: 600
+
+  - name: 🇹🇼 台湾
+    type: url-test
+    use:
+      - 流量光机场
+      - BestTelegram
+      - 良心云
+      - Mitce
+    filter: (?i)(台|TW|Tai)
+    url: http://www.gstatic.com/generate_204
+    interval: 600
+
+  - name: 🇯🇵 日本
+    type: url-test
+    use:
+      - 流量光机场
+      - BestTelegram
+      - 良心云
+      - Mitce
+    filter: (?i)(日本|东京|大阪|JP|Japan)
+    url: http://www.gstatic.com/generate_204
+    interval: 600
+
+  - name: 🇺🇸 美国
+    type: url-test
+    use:
+      - 流量光机场
+      - BestTelegram
+      - 良心云
+      - Mitce
+    filter: (?i)(美|US|United States)
+    url: http://www.gstatic.com/generate_204
+    interval: 600
+
+  - name: 🇸🇬 新加坡
+    type: url-test
+    use:
+      - 流量光机场
+      - BestTelegram
+      - 良心云
+      - Mitce
+    filter: (?i)(新加坡|SG|Singapore)
+    url: http://www.gstatic.com/generate_204
+    interval: 600
+
+  - name: 🇰🇷 韩国
+    type: url-test
+    use:
+      - 流量光机场
+      - BestTelegram
+      - 良心云
+      - Mitce
+    filter: (?i)(KR|Korea|首尔|韩)
+    url: http://www.gstatic.com/generate_204
+    interval: 600
+
+# =======================
+# 规则集
+# =======================
+rule-providers:
+  adguard-sdns:
+    type: http
+    behavior: domain
+    url: https://rule.kelee.one/Clash/AdGuardSDNSFilter.yaml
+    path: ./ruleset/adguard-sdns.yaml
+    interval: 86400
+
+  advertising:
+    type: http
+    behavior: domain
+    url: https://rule.kelee.one/Clash/Advertising.yaml
+    path: ./ruleset/advertising.yaml
+    interval: 86400
+
+  privacy:
+    type: http
+    behavior: domain
+    url: https://rule.kelee.one/Clash/Privacy.yaml
+    path: ./ruleset/privacy.yaml
+    interval: 86400
+
+  hijacking:
+    type: http
+    behavior: domain
+    url: https://rule.kelee.one/Clash/Hijacking.yaml
+    path: ./ruleset/hijacking.yaml
+    interval: 86400
+
+  apple:
+    type: http
+    behavior: domain
+    url: https://rule.kelee.one/Clash/Apple.yaml
+    path: ./ruleset/apple.yaml
+    interval: 86400
+
+  china-dns:
+    type: http
+    behavior: domain
+    url: https://rule.kelee.one/Clash/ChinaDNS.yaml
+    path: ./ruleset/china-dns.yaml
+    interval: 86400
+
+  china-max-no-ip:
+    type: http
+    behavior: classical
+    url: https://rule.kelee.one/Clash/ChinaMaxNoIP.yaml
+    path: ./ruleset/china-max-no-ip.yaml
+    interval: 86400
+
+  china-ips:
+    type: http
+    behavior: ipcidr
+    url: https://rule.kelee.one/Clash/ChinaIPs.yaml
+    path: ./ruleset/china-ips.yaml
+    interval: 86400
+
+# =======================
+# 规则
+# =======================
+rules:
+  - RULE-SET,adguard-sdns,REJECT
+  - RULE-SET,advertising,REJECT
+  - RULE-SET,privacy,REJECT
+  - RULE-SET,hijacking,REJECT
+  - RULE-SET,apple,DIRECT
+  - RULE-SET,china-dns,DIRECT
+  - RULE-SET,china-max-no-ip,DIRECT
+  - RULE-SET,china-ips,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,🚀 节点选择
+
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+geo-auto-update: true
+geo-update-interval: 24
+geodata-mode: true
