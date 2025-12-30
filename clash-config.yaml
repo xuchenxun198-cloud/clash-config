@@ -9,19 +9,26 @@ ipv6: true
 unified-delay: true
 tcp-concurrent: true
 find-process-mode: strict
+
 authentication: []
 skip-auth-prefixes:
   - 127.0.0.1/32
   - ::1/128
+
 dns:
   enable: true
   ipv6: true
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
+
   nameserver:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
-  fallback: []
+
+  fallback:
+    - https://dns.google/dns-query
+    - https://cloudflare-dns.com/dns-query
+
   fallback-filter:
     geoip: true
     geoip-code: CN
@@ -32,22 +39,27 @@ dns:
       - +.google.com
       - +.facebook.com
       - +.youtube.com
+
   fake-ip-filter:
-    - "*"
     - +.lan
     - +.local
     - time.*.com
     - ntp.*.com
     - +.market.xiaomi.com
+
   use-hosts: false
   use-system-hosts: false
-  respect-rules: false
+  respect-rules: true
+
   default-nameserver:
     - tls://223.5.5.5
+
   proxy-server-nameserver:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
+
   direct-nameserver: []
+
 proxy-providers:
   流量光机场:
     type: http
@@ -58,6 +70,7 @@ proxy-providers:
       enable: true
       interval: 300
       url: https://cp.cloudflare.com/generate_204
+
   BestTelegram:
     type: http
     url: https://oss114514.besttelecom.cc/api/v1/client/subscribe?token=89d3f9b74ffe324d4fdeeb637d2241a1
@@ -67,6 +80,7 @@ proxy-providers:
       enable: true
       interval: 300
       url: https://cp.cloudflare.com/generate_204
+
   良心云:
     type: http
     url: https://liangxin.xyz/api/v1/liangxin?OwO=7b48b9fb2b42d566d03346c52258344b
@@ -76,6 +90,7 @@ proxy-providers:
       enable: true
       interval: 300
       url: https://cp.cloudflare.com/generate_204
+
   Mitce:
     type: http
     url: https://app.mitce.net/?sid=346188&token=srvrcsgv
@@ -85,6 +100,7 @@ proxy-providers:
       enable: true
       interval: 300
       url: https://cp.cloudflare.com/generate_204
+
 proxy-groups:
   - name: 🚀 节点选择
     type: select
@@ -98,6 +114,7 @@ proxy-groups:
       - 🇸🇬 新加坡
       - 🇰🇷 韩国
       - DIRECT
+
   - name: ⚡ 自动选择
     type: url-test
     use:
@@ -107,6 +124,7 @@ proxy-groups:
       - Mitce
     url: http://www.gstatic.com/generate_204
     interval: 600
+
   - name: 🖱️ 手动选择
     type: select
     use:
@@ -114,6 +132,7 @@ proxy-groups:
       - BestTelegram
       - 良心云
       - Mitce
+
   - name: 🇭🇰 香港
     type: url-test
     use:
@@ -124,6 +143,7 @@ proxy-groups:
     filter: (?i)(港|HK|Hong)
     url: http://www.gstatic.com/generate_204
     interval: 600
+
   - name: 🇹🇼 台湾
     type: url-test
     use:
@@ -134,6 +154,7 @@ proxy-groups:
     filter: (?i)(台|TW|Tai)
     url: http://www.gstatic.com/generate_204
     interval: 600
+
   - name: 🇯🇵 日本
     type: url-test
     use:
@@ -144,6 +165,7 @@ proxy-groups:
     filter: (?i)(日本|东京|大阪|JP|Japan)
     url: http://www.gstatic.com/generate_204
     interval: 600
+
   - name: 🇺🇸 美国
     type: url-test
     use:
@@ -154,6 +176,7 @@ proxy-groups:
     filter: (?i)(美|US|United States)
     url: http://www.gstatic.com/generate_204
     interval: 600
+
   - name: 🇸🇬 新加坡
     type: url-test
     use:
@@ -164,6 +187,7 @@ proxy-groups:
     filter: (?i)(新加坡|SG|Singapore)
     url: http://www.gstatic.com/generate_204
     interval: 600
+
   - name: 🇰🇷 韩国
     type: url-test
     use:
@@ -174,56 +198,73 @@ proxy-groups:
     filter: (?i)(KR|Korea|首尔|韩)
     url: http://www.gstatic.com/generate_204
     interval: 600
+
 rule-providers:
+  BlockHttpDNS:
+    type: http
+    behavior: domain
+    url: https://rule.kelee.one/Clash/BlockHttpDNS.yaml
+    path: ./ruleset/BlockHttpDNS.yaml
+    interval: 86400
+
   adguard-sdns:
     type: http
     behavior: domain
     url: https://rule.kelee.one/Clash/AdGuardSDNSFilter.yaml
     path: ./ruleset/adguard-sdns.yaml
     interval: 86400
+
   advertising:
     type: http
     behavior: domain
     url: https://rule.kelee.one/Clash/Advertising.yaml
     path: ./ruleset/advertising.yaml
     interval: 86400
+
   privacy:
     type: http
     behavior: domain
     url: https://rule.kelee.one/Clash/Privacy.yaml
     path: ./ruleset/privacy.yaml
     interval: 86400
+
   hijacking:
     type: http
     behavior: domain
     url: https://rule.kelee.one/Clash/Hijacking.yaml
     path: ./ruleset/hijacking.yaml
     interval: 86400
+
   apple:
     type: http
     behavior: domain
     url: https://rule.kelee.one/Clash/Apple.yaml
     path: ./ruleset/apple.yaml
     interval: 86400
+
   china-dns:
     type: http
     behavior: domain
     url: https://rule.kelee.one/Clash/ChinaDNS.yaml
     path: ./ruleset/china-dns.yaml
     interval: 86400
+
   china-max-no-ip:
     type: http
     behavior: classical
     url: https://rule.kelee.one/Clash/ChinaMaxNoIP.yaml
     path: ./ruleset/china-max-no-ip.yaml
     interval: 86400
+
   china-ips:
     type: http
     behavior: ipcidr
     url: https://rule.kelee.one/Clash/ChinaIPs.yaml
     path: ./ruleset/china-ips.yaml
     interval: 86400
+
 rules:
+  - RULE-SET,BlockHttpDNS,REJECT
   - RULE-SET,adguard-sdns,REJECT
   - RULE-SET,advertising,REJECT
   - RULE-SET,privacy,REJECT
@@ -234,19 +275,24 @@ rules:
   - RULE-SET,china-ips,DIRECT
   - GEOIP,CN,DIRECT
   - MATCH,🚀 节点选择
+
 profile:
   store-selected: true
   store-fake-ip: true
+
 geo-auto-update: true
 geo-update-interval: 24
 geodata-mode: false
+
 external-controller: ""
 redir-port: 0
 tproxy-port: 0
+
 lan-allowed-ips:
   - 0.0.0.0/0
   - ::/0
 lan-disallowed-ips: []
+
 tun:
   enable: false
   device: Mihomo
@@ -258,6 +304,7 @@ tun:
     - any:53
   route-exclude-address: []
   mtu: 1500
+
 sniffer:
   enable: true
   parse-pure-ip: true
@@ -265,13 +312,10 @@ sniffer:
   override-destination: true
   sniff:
     HTTP:
-      ports:
-        - 80
-        - 443
+      ports: [80, 443]
       override-destination: true
     TLS:
-      ports:
-        - 443
+      ports: [443]
   skip-domain:
     - +.push.apple.com
   skip-dst-address:
@@ -289,6 +333,7 @@ sniffer:
     - 2a0a:f280:203::/48
   force-domain: []
   skip-src-address: []
+
 geox-url:
   geoip: https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat
   geosite: https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat
