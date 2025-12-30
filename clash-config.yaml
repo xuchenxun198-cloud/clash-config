@@ -264,11 +264,11 @@ rule-providers:
     interval: 86400
 
 rules:
-  - RULE-SET,BlockHttpDNS,REJECT
   - RULE-SET,adguard-sdns,REJECT
   - RULE-SET,advertising,REJECT
-  - RULE-SET,privacy,REJECT
+  - RULE-SET,BlockHttpDNS,REJECT
   - RULE-SET,hijacking,REJECT
+  - RULE-SET,privacy,REJECT
   - RULE-SET,apple,DIRECT
   - RULE-SET,china-dns,DIRECT
   - RULE-SET,china-max-no-ip,DIRECT
