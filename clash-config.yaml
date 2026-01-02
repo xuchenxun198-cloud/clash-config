@@ -2,7 +2,7 @@ port: 7892
 socks-port: 7891
 mixed-port: 7890
 allow-lan: false
-bind-address: "*"
+bind-address: 127.0.0.1
 mode: rule
 log-level: info
 ipv6: true
@@ -30,8 +30,7 @@ dns:
     - https://cloudflare-dns.com/dns-query
 
   fallback-filter:
-    geoip: true
-    geoip-code: CN
+    geoip: false
     ipcidr:
       - 240.0.0.0/4
       - 0.0.0.0/32
@@ -43,8 +42,12 @@ dns:
   fake-ip-filter:
     - +.lan
     - +.local
+    - localhost.ptlogin2.qq.com
+    - +.ntp.org
     - time.*.com
     - ntp.*.com
+    - +.msftconnecttest.com
+    - +.msftncsi.com
     - +.market.xiaomi.com
 
   use-hosts: false
@@ -63,7 +66,7 @@ dns:
 proxy-providers:
   流量光机场:
     type: http
-    url: https://drfytjmjhggnrgergergergerg6555.saojc.xyz/api/v1/client/subscribe?token=011b4801ea0915957434812d8a52a514
+    url: https://REDACTED
     interval: 3600
     path: ./providers/liuliangguang.yaml
     health-check:
@@ -73,7 +76,7 @@ proxy-providers:
 
   BestTelegram:
     type: http
-    url: https://oss114514.besttelecom.cc/api/v1/client/subscribe?token=89d3f9b74ffe324d4fdeeb637d2241a1
+    url: https://REDACTED
     interval: 3600
     path: ./providers/besttelegram.yaml
     health-check:
@@ -83,7 +86,7 @@ proxy-providers:
 
   良心云:
     type: http
-    url: https://liangxin.xyz/api/v1/liangxin?OwO=7b48b9fb2b42d566d03346c52258344b
+    url: https://REDACTED
     interval: 3600
     path: ./providers/liangxin.yaml
     health-check:
@@ -93,7 +96,7 @@ proxy-providers:
 
   Mitce:
     type: http
-    url: https://app.mitce.net/?sid=346188&token=srvrcsgv
+    url: https://REDACTED
     interval: 3600
     path: ./providers/mitce.yaml
     health-check:
@@ -269,11 +272,14 @@ rules:
   - RULE-SET,BlockHttpDNS,REJECT
   - RULE-SET,hijacking,REJECT
   - RULE-SET,privacy,REJECT
+
   - RULE-SET,apple,DIRECT
   - RULE-SET,china-dns,DIRECT
   - RULE-SET,china-max-no-ip,DIRECT
   - RULE-SET,china-ips,DIRECT
-  - GEOIP,CN,DIRECT
+
+  - DOMAIN-SUFFIX,snssdk.com,DIRECT
+
   - MATCH,🚀 节点选择
 
 profile:
@@ -287,23 +293,6 @@ geodata-mode: false
 external-controller: ""
 redir-port: 0
 tproxy-port: 0
-
-lan-allowed-ips:
-  - 0.0.0.0/0
-  - ::/0
-lan-disallowed-ips: []
-
-tun:
-  enable: false
-  device: Mihomo
-  stack: mixed
-  auto-route: true
-  auto-redirect: false
-  auto-detect-interface: true
-  dns-hijack:
-    - any:53
-  route-exclude-address: []
-  mtu: 1500
 
 sniffer:
   enable: true
@@ -331,8 +320,6 @@ sniffer:
     - 2001:b28:f23c::/47
     - 2001:b28:f23f::/48
     - 2a0a:f280:203::/48
-  force-domain: []
-  skip-src-address: []
 
 geox-url:
   geoip: https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat
