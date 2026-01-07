@@ -66,7 +66,7 @@ dns:
 proxy-providers:
   流量光机场:
     type: http
-    url: https://REDACTED
+    url: https://drfytjmjhggnrgergergergerg6555.saojc.xyz/api/v1/client/subscribe?token=011b4801ea0915957434812d8a52a514
     interval: 3600
     path: ./providers/liuliangguang.yaml
     health-check:
@@ -76,7 +76,7 @@ proxy-providers:
 
   BestTelegram:
     type: http
-    url: https://REDACTED
+    url: https://suuuuuuub.besttelecom.cc/api/v1/client/subscribe?token=89d3f9b74ffe324d4fdeeb637d2241a1
     interval: 3600
     path: ./providers/besttelegram.yaml
     health-check:
@@ -86,7 +86,7 @@ proxy-providers:
 
   良心云:
     type: http
-    url: https://REDACTED
+    url: https://liangxin.xyz/api/v1/liangxin?OwO=7b48b9fb2b42d566d03346c52258344b
     interval: 3600
     path: ./providers/liangxin.yaml
     health-check:
@@ -96,7 +96,7 @@ proxy-providers:
 
   Mitce:
     type: http
-    url: https://REDACTED
+    url: https://app.mitce.net/?sid=346188&token=srvrcsgv
     interval: 3600
     path: ./providers/mitce.yaml
     health-check:
@@ -106,7 +106,7 @@ proxy-providers:
 
   XFLTD:
     type: http
-    url: https://sub.xfltd.cfd/cctv/user/client/get?token=00c9730ff64afe576664f05b1b6b559a
+    url: http://8.212.7.131:777/api/v1/client/subscribe?token=55d5dafd6e890eaa7791ba4171dcbb6c
     interval: 3600
     path: ./providers/xfltd.yaml
     health-check:
