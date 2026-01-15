@@ -21,14 +21,12 @@ dns:
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
 
-  # 国内 DNS
   nameserver:
     - 223.5.5.5
     - 223.6.6.6
     - 114.114.114.114
     - 114.114.115.115
 
-  # 国外 DNS（fallback）
   fallback:
     - https://dns.google/dns-query
     - https://cloudflare-dns.com/dns-query
@@ -117,6 +115,16 @@ proxy-providers:
       interval: 300
       url: https://cp.cloudflare.com/generate_204
 
+  OneStep:
+    type: http
+    url: https://decker.onelastkissstep.cyou/one/last/kiss/?token=95cc4f76f29748fc38bf92a46cc2a534
+    interval: 3600
+    path: ./providers/onestep.yaml
+    health-check:
+      enable: true
+      interval: 300
+      url: https://cp.cloudflare.com/generate_204
+
 proxy-groups:
   - name: 🚀 节点选择
     type: select
@@ -138,6 +146,7 @@ proxy-groups:
       - 良心云
       - Mitce
       - XFLTD
+      - OneStep
     url: http://www.gstatic.com/generate_204
     interval: 600
 
@@ -148,6 +157,7 @@ proxy-groups:
       - 良心云
       - Mitce
       - XFLTD
+      - OneStep
 
   - name: 🇭🇰 香港
     type: url-test
@@ -156,6 +166,7 @@ proxy-groups:
       - 良心云
       - Mitce
       - XFLTD
+      - OneStep
     filter: (?i)(港|HK|Hong)
     url: http://www.gstatic.com/generate_204
     interval: 600
@@ -167,6 +178,7 @@ proxy-groups:
       - 良心云
       - Mitce
       - XFLTD
+      - OneStep
     filter: (?i)(台|TW|Tai)
     url: http://www.gstatic.com/generate_204
     interval: 600
@@ -178,6 +190,7 @@ proxy-groups:
       - 良心云
       - Mitce
       - XFLTD
+      - OneStep
     filter: (?i)(日本|东京|大阪|JP|Japan)
     url: http://www.gstatic.com/generate_204
     interval: 600
@@ -189,6 +202,7 @@ proxy-groups:
       - 良心云
       - Mitce
       - XFLTD
+      - OneStep
     filter: (?i)(美|US|United States)
     url: http://www.gstatic.com/generate_204
     interval: 600
@@ -200,6 +214,7 @@ proxy-groups:
       - 良心云
       - Mitce
       - XFLTD
+      - OneStep
     filter: (?i)(新加坡|SG|Singapore)
     url: http://www.gstatic.com/generate_204
     interval: 600
@@ -211,6 +226,7 @@ proxy-groups:
       - 良心云
       - Mitce
       - XFLTD
+      - OneStep
     filter: (?i)(KR|Korea|首尔|韩)
     url: http://www.gstatic.com/generate_204
     interval: 600
@@ -285,14 +301,10 @@ rules:
   - RULE-SET,BlockHttpDNS,REJECT
   - RULE-SET,hijacking,REJECT
   - RULE-SET,privacy,REJECT
-
   - RULE-SET,apple,DIRECT
   - RULE-SET,china-dns,DIRECT
   - RULE-SET,china-max-no-ip,DIRECT
   - RULE-SET,china-ips,DIRECT
-
-  - DOMAIN-SUFFIX,snssdk.com,DIRECT
-
   - MATCH,🚀 节点选择
 
 profile:
@@ -301,7 +313,7 @@ profile:
 
 geo-auto-update: true
 geo-update-interval: 24
-geodata-mode: false
+geodata-mode: true
 
 sniffer:
   enable: true
