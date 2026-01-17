@@ -107,7 +107,7 @@ proxy-providers:
 
   XFLTD:
     type: http
-    url: https://sub.xfltd.cfd/cctv/user/client/get?token=0da33887b600a8b6b9753e9a5ba75d52
+    url: https://api.xfltd.click/cctv/user/client/get?token=b39ca457084f8dcc0ea359209e822438
     interval: 3600
     path: ./providers/xfltd.yaml
     health-check:
