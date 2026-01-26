@@ -19,7 +19,7 @@ dns:
   enable: true
   ipv6: true
   enhanced-mode: fake-ip
-  fake-ip-range: 198.18.0.1/16
+  fake-ip-range: 198.18.0.1/15
 
   nameserver:
     - 223.5.5.5
@@ -75,40 +75,10 @@ dns:
     - 114.114.114.114
 
 proxy-providers:
-  流量光机场:
-    type: http
-    url: https://drfytjmjhggnrgergergergerg6555.saojc.xyz/api/v1/client/subscribe?token=011b4801ea0915957434812d8a52a514
-    interval: 3600
-    path: ./providers/liuliangguang.yaml
-    health-check:
-      enable: true
-      interval: 300
-      url: https://cp.cloudflare.com/generate_204
-
-  良心云:
-    type: http
-    url: https://liangxin.xyz/api/v1/liangxin?OwO=7b48b9fb2b42d566d03346c52258344b
-    interval: 3600
-    path: ./providers/liangxin.yaml
-    health-check:
-      enable: true
-      interval: 300
-      url: https://cp.cloudflare.com/generate_204
-
-  Mitce:
-    type: http
-    url: https://app.mitce.net/?sid=346188&token=srvrcsgv
-    interval: 3600
-    path: ./providers/mitce.yaml
-    health-check:
-      enable: true
-      interval: 300
-      url: https://cp.cloudflare.com/generate_204
-
   XFLTD:
     type: http
     url: https://api.xfltd.click/cctv/user/client/get?token=b39ca457084f8dcc0ea359209e822438
-    interval: 3600
+    interval: 86400
     path: ./providers/xfltd.yaml
     health-check:
       enable: true
@@ -118,8 +88,18 @@ proxy-providers:
   OneStep:
     type: http
     url: https://decker.onelastkissstep.cyou/one/last/kiss/?token=95cc4f76f29748fc38bf92a46cc2a534
-    interval: 3600
+    interval: 86400
     path: ./providers/onestep.yaml
+    health-check:
+      enable: true
+      interval: 300
+      url: https://cp.cloudflare.com/generate_204
+
+  BestTelegram:
+    type: http
+    url: https://suuuuuuub.besttelecom.cc/api/v1/client/subscribe?token=89d3f9b74ffe324d4fdeeb637d2241a1
+    interval: 86400
+    path: ./providers/besttelegram.yaml
     health-check:
       enable: true
       interval: 300
@@ -142,31 +122,25 @@ proxy-groups:
   - name: ⚡ 自动选择
     type: url-test
     use:
-      - 流量光机场
-      - 良心云
-      - Mitce
       - XFLTD
       - OneStep
+      - BestTelegram
     url: http://www.gstatic.com/generate_204
     interval: 600
 
   - name: 🖱️ 手动选择
     type: select
     use:
-      - 流量光机场
-      - 良心云
-      - Mitce
       - XFLTD
       - OneStep
+      - BestTelegram
 
   - name: 🇭🇰 香港
     type: url-test
     use:
-      - 流量光机场
-      - 良心云
-      - Mitce
       - XFLTD
       - OneStep
+      - BestTelegram
     filter: (?i)(港|HK|Hong)
     url: http://www.gstatic.com/generate_204
     interval: 600
@@ -174,11 +148,9 @@ proxy-groups:
   - name: 🇹🇼 台湾
     type: url-test
     use:
-      - 流量光机场
-      - 良心云
-      - Mitce
       - XFLTD
       - OneStep
+      - BestTelegram
     filter: (?i)(台|TW|Tai)
     url: http://www.gstatic.com/generate_204
     interval: 600
@@ -186,11 +158,9 @@ proxy-groups:
   - name: 🇯🇵 日本
     type: url-test
     use:
-      - 流量光机场
-      - 良心云
-      - Mitce
       - XFLTD
       - OneStep
+      - BestTelegram
     filter: (?i)(日本|东京|大阪|JP|Japan)
     url: http://www.gstatic.com/generate_204
     interval: 600
@@ -198,11 +168,9 @@ proxy-groups:
   - name: 🇺🇸 美国
     type: url-test
     use:
-      - 流量光机场
-      - 良心云
-      - Mitce
       - XFLTD
       - OneStep
+      - BestTelegram
     filter: (?i)(美|US|United States)
     url: http://www.gstatic.com/generate_204
     interval: 600
@@ -210,11 +178,9 @@ proxy-groups:
   - name: 🇸🇬 新加坡
     type: url-test
     use:
-      - 流量光机场
-      - 良心云
-      - Mitce
       - XFLTD
       - OneStep
+      - BestTelegram
     filter: (?i)(新加坡|SG|Singapore)
     url: http://www.gstatic.com/generate_204
     interval: 600
@@ -222,11 +188,9 @@ proxy-groups:
   - name: 🇰🇷 韩国
     type: url-test
     use:
-      - 流量光机场
-      - 良心云
-      - Mitce
       - XFLTD
       - OneStep
+      - BestTelegram
     filter: (?i)(KR|Korea|首尔|韩)
     url: http://www.gstatic.com/generate_204
     interval: 600
