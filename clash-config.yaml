@@ -77,7 +77,7 @@ dns:
 proxy-providers:
   XFLTD:
     type: http
-    url: https://api.xfltd.click/cctv/user/client/get?token=b39ca457084f8dcc0ea359209e822438
+    url: https://api.xfltd.click/cctv/user/client/get?token=90910a0f8fd1dcbe63c024a4a78dee28
     interval: 86400
     path: ./providers/xfltd.yaml
     health-check:
