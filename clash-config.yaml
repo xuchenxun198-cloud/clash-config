@@ -97,7 +97,7 @@ proxy-providers:
 
   BestTelegram:
     type: http
-    url: https://suuuuuuub.besttelecom.cc/api/v1/client/subscribe?token=89d3f9b74ffe324d4fdeeb637d2241a1
+    url: https://suuuuuuub.besttelecom.cc/api/v1/client/subscribe?token=3c38f1f6ee4915cadb9862fd37e6d95e
     interval: 86400
     path: ./providers/besttelegram.yaml
     health-check:
