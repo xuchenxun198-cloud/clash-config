@@ -58,7 +58,7 @@ proxy-providers:
 
   XFLTD:
     type: http
-    url: "https://get.cctvclient.cn/cctv/user/client/get?token=NTczMjcxOmI4ODVmNTAzNWY4NWJkM2RkYjgxMjVjYzAzOWMyZmUzZjdjZDQwOWE"
+    url: "https://get.cctvclient.cn/cctv/user/client/get?token=NTczMjcxOjYwZTg4Yjc0NzljYTI0MTIyMTVmZGE0YWE1NjZiODg4MWY0ZDYyYzQ"
     interval: 0
     path: ./providers/xfltd.yaml
     health-check:
