@@ -56,6 +56,16 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
       interval: 300
 
+  XFLTD:
+    type: http
+    url: "https://sub.xfltd.cfd/cctv/user/client/get?token=NTczMjcxOmQwMjMxZjY4ZWRiOGQxZjg0YTA2YWY3Mzg5YWVlNzViYWNjMDIzNmE"
+    interval: 0
+    path: ./providers/xfltd.yaml
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+
 proxy-groups:
   - name: 选择节点
     type: select
@@ -81,6 +91,7 @@ proxy-groups:
     use:
       - WestData
       - OuONetwork
+      - XFLTD
     filter: "(?i)(台|TW|Tai)"
     url: http://www.gstatic.com/generate_204
     interval: 300
