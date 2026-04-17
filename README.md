@@ -48,7 +48,7 @@ proxy-providers:
 
   OuONetwork:
     type: http
-    url: "https://oss5-china-south-bucket.selectgroup.click/api/graphql?token=9b1fda247a0b9432d836fe7ce8849f5a"
+    url: "https://oss2-china-south-bucket.selectgroup.click/api/graphql?token=9b1fda247a0b9432d836fe7ce8849f5a"
     interval: 3600
     path: ./providers/ouonetwork.yaml
     health-check:
