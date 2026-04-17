@@ -66,6 +66,46 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
       interval: 300
 
+  Mitce:
+    type: http
+    url: "https://app.mitce.net/?sid=570892&token=srvzbyfc"
+    interval: 3600
+    path: ./providers/mitce.yaml
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+
+  Valtrogen:
+    type: http
+    url: "https://api.valconfig.com/sub/?access_key=738486c63b18abc7d693296b1db87104"
+    interval: 3600
+    path: ./providers/valtrogen.yaml
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+
+  良心云:
+    type: http
+    url: "https://liangxin.xyz/api/v1/liangxin?OwO=7b48b9fb2b42d566d03346c52258344b"
+    interval: 3600
+    path: ./providers/liangxin.yaml
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+
+  BestTelegram:
+    type: http
+    url: "https://suuuuuuub.besttelecom.cc/api/v1/client/subscribe?token=3c38f1f6ee4915cadb9862fd37e6d95e"
+    interval: 3600
+    path: ./providers/besttelegram.yaml
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+
 proxy-groups:
   - name: 选择节点
     type: select
@@ -81,6 +121,11 @@ proxy-groups:
     use:
       - WestData
       - OuONetwork
+      - Mitce
+      - Valtrogen
+      - 良心云
+      - BestTelegram
+      - XFLTD
     filter: "(?i)(港|HK|Hong)"
     url: http://www.gstatic.com/generate_204
     interval: 300
@@ -92,6 +137,10 @@ proxy-groups:
       - WestData
       - OuONetwork
       - XFLTD
+      - Mitce
+      - Valtrogen
+      - 良心云
+      - BestTelegram
     filter: "(?i)(台|TW|Tai)"
     url: http://www.gstatic.com/generate_204
     interval: 300
@@ -102,6 +151,11 @@ proxy-groups:
     use:
       - WestData
       - OuONetwork
+      - Mitce
+      - Valtrogen
+      - 良心云
+      - BestTelegram
+      - XFLTD
     filter: "(?i)(日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan)"
     url: http://www.gstatic.com/generate_204
     interval: 300
@@ -112,6 +166,11 @@ proxy-groups:
     use:
       - WestData
       - OuONetwork
+      - Mitce
+      - Valtrogen
+      - 良心云
+      - BestTelegram
+      - XFLTD
     filter: "(?i)(新加坡|坡|狮城|SG|Singapore)"
     url: http://www.gstatic.com/generate_204
     interval: 300
@@ -122,6 +181,11 @@ proxy-groups:
     use:
       - WestData
       - OuONetwork
+      - Mitce
+      - Valtrogen
+      - 良心云
+      - BestTelegram
+      - XFLTD
     filter: "(?i)(美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States)"
     url: http://www.gstatic.com/generate_204
     interval: 300
@@ -140,27 +204,6 @@ rule-providers:
     behavior: domain
     url: "https://rule.kelee.one/Clash/Advertising.yaml"
     path: ./ruleset/advertising.yaml
-    interval: 86400
-
-  BlockHttpDNS:
-    type: http
-    behavior: domain
-    url: "https://rule.kelee.one/Clash/BlockHttpDNS.yaml"
-    path: ./ruleset/blockhttpdns.yaml
-    interval: 86400
-
-  Privacy:
-    type: http
-    behavior: domain
-    url: "https://rule.kelee.one/Clash/Privacy.yaml"
-    path: ./ruleset/privacy.yaml
-    interval: 86400
-
-  Hijacking:
-    type: http
-    behavior: domain
-    url: "https://rule.kelee.one/Clash/Hijacking.yaml"
-    path: ./ruleset/hijacking.yaml
     interval: 86400
 
   ChinaMaxNoIP:
@@ -184,24 +227,17 @@ rule-providers:
     path: ./ruleset/chinadns.yaml
     interval: 86400
 
+  ChinaASN:
+    type: http
+    behavior: classical
+    url: "https://rule.kelee.one/Clash/ChinaASN.yaml"
+    path: ./ruleset/chinaasn.yaml
+    interval: 86400
+
 rules:
   - RULE-SET,AdGuardSDNSFilter,REJECT
   - RULE-SET,Advertising,REJECT
-  - RULE-SET,BlockHttpDNS,REJECT
-  - RULE-SET,Privacy,REJECT
-  - RULE-SET,Hijacking,REJECT
-  - IP-ASN,4134,DIRECT
-  - IP-ASN,4809,DIRECT
-  - IP-ASN,4812,DIRECT
-  - IP-ASN,4811,DIRECT
-  - IP-ASN,4837,DIRECT
-  - IP-ASN,9929,DIRECT
-  - IP-ASN,17622,DIRECT
-  - IP-ASN,9808,DIRECT
-  - IP-ASN,56040,DIRECT
-  - IP-ASN,56041,DIRECT
-  - IP-ASN,24400,DIRECT
-  - IP-ASN,137699,DIRECT
+  - RULE-SET,ChinaASN,DIRECT
   - RULE-SET,ChinaMaxNoIP,DIRECT
   - RULE-SET,ChinaDNS,DIRECT
   - RULE-SET,ChinaIPs,DIRECT
