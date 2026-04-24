@@ -128,8 +128,6 @@ rule-providers:
     interval: 86400
 
 rules:
-  - RULE-SET,AdGuardSDNSFilter,REJECT
-  - RULE-SET,Advertising,REJECT
   - RULE-SET,ChinaMaxNoIP,DIRECT
   - RULE-SET,ChinaIPs,DIRECT
   - RULE-SET,ChinaDNS,DIRECT
