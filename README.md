@@ -99,38 +99,24 @@ proxy-groups:
     filter: "(?i)(美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States)"
 
 rule-providers:
-  AdGuardSDNSFilter:
-    type: http
-    behavior: domain
-    url: "https://rule.kelee.one/Clash/AdGuardSDNSFilter.yaml"
-    path: ./ruleset/AdGuardSDNSFilter.yaml
-    interval: 86400
-
-  Advertising:
-    type: http
-    behavior: domain
-    url: "https://rule.kelee.one/Clash/Advertising.yaml"
-    path: ./ruleset/Advertising.yaml
-    interval: 86400
-
   ChinaMaxNoIP:
     type: http
     behavior: domain
-    url: "https://rule.kelee.one/Clash/ChinaMaxNoIP.yaml"
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMaxNoIP/ChinaMaxNoIP_Classical.yaml"
     path: ./ruleset/ChinaMaxNoIP.yaml
     interval: 86400
 
   ChinaIPs:
     type: http
     behavior: ipcidr
-    url: "https://rule.kelee.one/Clash/ChinaIPs.yaml"
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaIPs/ChinaIPs_Classical.yaml"
     path: ./ruleset/ChinaIPs.yaml
     interval: 86400
 
   ChinaDNS:
     type: http
     behavior: domain
-    url: "https://rule.kelee.one/Clash/ChinaDNS.yaml"
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaDNS/ChinaDNS.yaml"
     path: ./ruleset/ChinaDNS.yaml
     interval: 86400
 
