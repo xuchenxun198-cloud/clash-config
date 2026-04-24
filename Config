@@ -101,16 +101,27 @@ rules:
   - DOMAIN,localhost,DIRECT
 
   # Private / LAN
+  - IP-CIDR,0.0.0.0/8,DIRECT,no-resolve
   - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
   - IP-CIDR,100.64.0.0/10,DIRECT,no-resolve
   - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
   - IP-CIDR,169.254.0.0/16,DIRECT,no-resolve
   - IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
+  - IP-CIDR,192.0.0.0/24,DIRECT,no-resolve
   - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+  - IP-CIDR,198.18.0.0/15,DIRECT,no-resolve
   - IP-CIDR,224.0.0.0/4,DIRECT,no-resolve
+  - IP-CIDR,240.0.0.0/4,DIRECT,no-resolve
+  - IP-CIDR6,::1/128,DIRECT,no-resolve
   - IP-CIDR6,fc00::/7,DIRECT,no-resolve
   - IP-CIDR6,fe80::/10,DIRECT,no-resolve
   - GEOIP,LAN,DIRECT
+
+  # DNS / connectivity
+  - DOMAIN-SUFFIX,dns.alidns.com,DIRECT
+  - DOMAIN-SUFFIX,doh.pub,DIRECT
+  - DOMAIN-SUFFIX,msftconnecttest.com,DIRECT
+  - DOMAIN-SUFFIX,msftncsi.com,DIRECT
 
   # Baidu
   - DOMAIN-SUFFIX,baidu.com,DIRECT
@@ -119,6 +130,9 @@ rules:
   - DOMAIN-SUFFIX,bdstatic.com,DIRECT
   - DOMAIN-SUFFIX,bcebos.com,DIRECT
   - DOMAIN-SUFFIX,hao123.com,DIRECT
+  - DOMAIN-SUFFIX,map.baidu.com,DIRECT
+  - DOMAIN-SUFFIX,baifubao.com,DIRECT
+  - DOMAIN-SUFFIX,duxiaoman.com,DIRECT
 
   # Tencent
   - DOMAIN-SUFFIX,qq.com,DIRECT
@@ -128,15 +142,29 @@ rules:
   - DOMAIN-SUFFIX,gtimg.com,DIRECT
   - DOMAIN-SUFFIX,idqqimg.com,DIRECT
   - DOMAIN-SUFFIX,myqcloud.com,DIRECT
+  - DOMAIN-SUFFIX,qcloud.com,DIRECT
+  - DOMAIN-SUFFIX,qcloudimg.com,DIRECT
+  - DOMAIN-SUFFIX,qimei.cn,DIRECT
   - DOMAIN-SUFFIX,qpic.cn,DIRECT
   - DOMAIN-SUFFIX,qlogo.cn,DIRECT
   - DOMAIN-SUFFIX,qqmail.com,DIRECT
+  - DOMAIN-SUFFIX,foxmail.com,DIRECT
   - DOMAIN-SUFFIX,tenpay.com,DIRECT
   - DOMAIN-SUFFIX,soso.com,DIRECT
   - DOMAIN-SUFFIX,url.cn,DIRECT
   - DOMAIN-SUFFIX,meeting.tencent.com,DIRECT
+  - DOMAIN-SUFFIX,docs.qq.com,DIRECT
+  - DOMAIN-SUFFIX,v.qq.com,DIRECT
+  - DOMAIN-SUFFIX,video.qq.com,DIRECT
+  - DOMAIN-SUFFIX,qqvideo.tc.qq.com,DIRECT
+  - DOMAIN-SUFFIX,y.qq.com,DIRECT
+  - DOMAIN-SUFFIX,kg.qq.com,DIRECT
+  - DOMAIN-SUFFIX,imqq.com,DIRECT
+  - DOMAIN-SUFFIX,tencentcdn.com,DIRECT
+  - DOMAIN-SUFFIX,tencentmusic.com,DIRECT
+  - DOMAIN-SUFFIX,tmead.y.qq.com,DIRECT
 
-  # Alibaba / Alipay / Amap
+  # Alibaba / Ant / Aliyun
   - DOMAIN-SUFFIX,alibaba.com,DIRECT
   - DOMAIN-SUFFIX,alibabacloud.com,DIRECT
   - DOMAIN-SUFFIX,aliyun.com,DIRECT
@@ -148,16 +176,27 @@ rules:
   - DOMAIN-SUFFIX,alicdn.net,DIRECT
   - DOMAIN-SUFFIX,aliyundrive.com,DIRECT
   - DOMAIN-SUFFIX,alipan.com,DIRECT
+  - DOMAIN-SUFFIX,cainiao.com,DIRECT
   - DOMAIN-SUFFIX,amap.com,DIRECT
   - DOMAIN-SUFFIX,autonavi.com,DIRECT
   - DOMAIN-SUFFIX,alipay.com,DIRECT
+  - DOMAIN-SUFFIX,antfin.com,DIRECT
+  - DOMAIN-SUFFIX,antgroup.com,DIRECT
+  - DOMAIN-SUFFIX,ele.me,DIRECT
+  - DOMAIN-SUFFIX,gaode.com,DIRECT
+  - DOMAIN-SUFFIX,xiami.com,DIRECT
+  - DOMAIN-SUFFIX,dingtalk.com,DIRECT
 
-  # JD
+  # JD / Suning / VIP
   - DOMAIN-SUFFIX,jd.com,DIRECT
   - DOMAIN-SUFFIX,jd.hk,DIRECT
   - DOMAIN-SUFFIX,jdcloud.com,DIRECT
   - DOMAIN-SUFFIX,360buyimg.com,DIRECT
   - DOMAIN-SUFFIX,360buy.com,DIRECT
+  - DOMAIN-SUFFIX,suning.com,DIRECT
+  - DOMAIN-SUFFIX,suning.cn,DIRECT
+  - DOMAIN-SUFFIX,vip.com,DIRECT
+  - DOMAIN-SUFFIX,xiangqu.com,DIRECT
 
   # NetEase
   - DOMAIN-SUFFIX,163.com,DIRECT
@@ -168,13 +207,9 @@ rules:
   - DOMAIN-SUFFIX,netease.im,DIRECT
   - DOMAIN-SUFFIX,youdao.com,DIRECT
   - DOMAIN-SUFFIX,126mail.com,DIRECT
-
-  # Bilibili
-  - DOMAIN-SUFFIX,bilibili.com,DIRECT
-  - DOMAIN-SUFFIX,bilivideo.com,DIRECT
-  - DOMAIN-SUFFIX,biliapi.com,DIRECT
-  - DOMAIN-SUFFIX,biliimg.com,DIRECT
-  - DOMAIN-SUFFIX,biligame.com,DIRECT
+  - DOMAIN-SUFFIX,mail.163.com,DIRECT
+  - DOMAIN-SUFFIX,music.163.com,DIRECT
+  - DOMAIN-SUFFIX,126.fm,DIRECT
 
   # ByteDance
   - DOMAIN-SUFFIX,bytedance.com,DIRECT
@@ -182,19 +217,45 @@ rules:
   - DOMAIN-SUFFIX,ixigua.com,DIRECT
   - DOMAIN-SUFFIX,douyin.com,DIRECT
   - DOMAIN-SUFFIX,douyincdn.com,DIRECT
+  - DOMAIN-SUFFIX,douyinstatic.com,DIRECT
+  - DOMAIN-SUFFIX,amemv.com,DIRECT
+  - DOMAIN-SUFFIX,snssdk.com,DIRECT
   - DOMAIN-SUFFIX,toutiao.com,DIRECT
   - DOMAIN-SUFFIX,toutiaocdn.com,DIRECT
+  - DOMAIN-SUFFIX,jinritemai.com,DIRECT
   - DOMAIN-SUFFIX,feishu.cn,DIRECT
+  - DOMAIN-SUFFIX,volccdn.com,DIRECT
+  - DOMAIN-SUFFIX,volces.com,DIRECT
 
-  # Huawei / Honor / Xiaomi
+  # Bilibili / ACG
+  - DOMAIN-SUFFIX,bilibili.com,DIRECT
+  - DOMAIN-SUFFIX,bilivideo.com,DIRECT
+  - DOMAIN-SUFFIX,biliapi.com,DIRECT
+  - DOMAIN-SUFFIX,biliimg.com,DIRECT
+  - DOMAIN-SUFFIX,biligame.com,DIRECT
+  - DOMAIN-SUFFIX,hdslb.com,DIRECT
+  - DOMAIN-SUFFIX,acgvideo.com,DIRECT
+
+  # Huawei / Honor / Xiaomi / Oppo / Vivo
   - DOMAIN-SUFFIX,huawei.com,DIRECT
   - DOMAIN-SUFFIX,hicloud.com,DIRECT
   - DOMAIN-SUFFIX,honor.com,DIRECT
   - DOMAIN-SUFFIX,dbankcdn.com,DIRECT
+  - DOMAIN-SUFFIX,vmall.com,DIRECT
   - DOMAIN-SUFFIX,mi.com,DIRECT
   - DOMAIN-SUFFIX,miui.com,DIRECT
   - DOMAIN-SUFFIX,xiaomi.com,DIRECT
   - DOMAIN-SUFFIX,duokan.com,DIRECT
+  - DOMAIN-SUFFIX,mi-img.com,DIRECT
+  - DOMAIN-SUFFIX,oppo.com,DIRECT
+  - DOMAIN-SUFFIX,oppomobile.com,DIRECT
+  - DOMAIN-SUFFIX,heytap.com,DIRECT
+  - DOMAIN-SUFFIX,realme.com,DIRECT
+  - DOMAIN-SUFFIX,vivo.com,DIRECT
+  - DOMAIN-SUFFIX,vivo.com.cn,DIRECT
+  - DOMAIN-SUFFIX,iqoo.com,DIRECT
+
+  # 360 / portals / search
   - DOMAIN-SUFFIX,360.cn,DIRECT
   - DOMAIN-SUFFIX,360.com,DIRECT
   - DOMAIN-SUFFIX,360safe.com,DIRECT
@@ -207,6 +268,9 @@ rules:
   - DOMAIN-SUFFIX,sina.com,DIRECT
   - DOMAIN-SUFFIX,weibo.com,DIRECT
   - DOMAIN-SUFFIX,weibocdn.com,DIRECT
+  - DOMAIN-SUFFIX,ifeng.com,DIRECT
+
+  # Community / media / knowledge
   - DOMAIN-SUFFIX,zhihu.com,DIRECT
   - DOMAIN-SUFFIX,zhimg.com,DIRECT
   - DOMAIN-SUFFIX,xiaohongshu.com,DIRECT
@@ -216,38 +280,98 @@ rules:
   - DOMAIN-SUFFIX,oschina.net,DIRECT
   - DOMAIN-SUFFIX,douban.com,DIRECT
   - DOMAIN-SUFFIX,doubanio.com,DIRECT
+  - DOMAIN-SUFFIX,juejin.cn,DIRECT
+  - DOMAIN-SUFFIX,jianshu.com,DIRECT
+  - DOMAIN-SUFFIX,sspai.com,DIRECT
+  - DOMAIN-SUFFIX,huxiu.com,DIRECT
+
+  # Life / local services / jobs
+  - DOMAIN-SUFFIX,58.com,DIRECT
   - DOMAIN-SUFFIX,ganji.com,DIRECT
   - DOMAIN-SUFFIX,zhipin.com,DIRECT
   - DOMAIN-SUFFIX,liepin.com,DIRECT
   - DOMAIN-SUFFIX,51job.com,DIRECT
+  - DOMAIN-SUFFIX,anjuke.com,DIRECT
+  - DOMAIN-SUFFIX,fang.com,DIRECT
   - DOMAIN-SUFFIX,pinduoduo.com,DIRECT
   - DOMAIN-SUFFIX,yangkeduo.com,DIRECT
   - DOMAIN-SUFFIX,meituan.com,DIRECT
   - DOMAIN-SUFFIX,meituan.net,DIRECT
-  - DOMAIN-SUFFIX,ele.me,DIRECT
+  - DOMAIN-SUFFIX,dianping.com,DIRECT
+  - DOMAIN-SUFFIX,ctrip.com,DIRECT
+  - DOMAIN-SUFFIX,trip.com,DIRECT
+  - DOMAIN-SUFFIX,qunar.com,DIRECT
+  - DOMAIN-SUFFIX,12306.cn,DIRECT
+
+  # Video / livestream / music
+  - DOMAIN-SUFFIX,youku.com,DIRECT
   - DOMAIN-SUFFIX,ykimg.com,DIRECT
   - DOMAIN-SUFFIX,iqiyi.com,DIRECT
   - DOMAIN-SUFFIX,iqiyipic.com,DIRECT
   - DOMAIN-SUFFIX,ppsimg.com,DIRECT
   - DOMAIN-SUFFIX,mgtv.com,DIRECT
   - DOMAIN-SUFFIX,hitv.com,DIRECT
+  - DOMAIN-SUFFIX,fun.tv,DIRECT
+  - DOMAIN-SUFFIX,le.com,DIRECT
+  - DOMAIN-SUFFIX,ku6.com,DIRECT
   - DOMAIN-SUFFIX,kugou.com,DIRECT
   - DOMAIN-SUFFIX,kuwo.cn,DIRECT
+  - DOMAIN-SUFFIX,qianqian.com,DIRECT
+  - DOMAIN-SUFFIX,ximalaya.com,DIRECT
+  - DOMAIN-SUFFIX,qingting.fm,DIRECT
+
+  # Download / cloud / office
   - DOMAIN-SUFFIX,pan.baidu.com,DIRECT
   - DOMAIN-SUFFIX,quark.cn,DIRECT
   - DOMAIN-SUFFIX,uc.cn,DIRECT
   - DOMAIN-SUFFIX,115.com,DIRECT
+  - DOMAIN-SUFFIX,123pan.com,DIRECT
+  - DOMAIN-SUFFIX,lanzou.com,DIRECT
+  - DOMAIN-SUFFIX,lanzoub.com,DIRECT
+  - DOMAIN-SUFFIX,lanzoui.com,DIRECT
+  - DOMAIN-SUFFIX,123684.com,DIRECT
   - DOMAIN-SUFFIX,wps.cn,DIRECT
   - DOMAIN-SUFFIX,kingsoft.com,DIRECT
   - DOMAIN-SUFFIX,ksyun.com,DIRECT
+  - DOMAIN-SUFFIX,kanbox.com,DIRECT
   - DOMAIN-SUFFIX,lanhuapp.com,DIRECT
   - DOMAIN-SUFFIX,processon.com,DIRECT
+  - DOMAIN-SUFFIX,mastergo.com,DIRECT
+  - DOMAIN-SUFFIX,shimo.im,DIRECT
+  - DOMAIN-SUFFIX,yuque.com,DIRECT
+  - DOMAIN-SUFFIX,naotu.com,DIRECT
+
+  # Games / platforms
   - DOMAIN-SUFFIX,steamchina.com,DIRECT
   - DOMAIN-SUFFIX,perfectworld.com,DIRECT
+  - DOMAIN-SUFFIX,wanmei.com,DIRECT
+  - DOMAIN-SUFFIX,neteasegames.com,DIRECT
+  - DOMAIN-SUFFIX,uu.163.com,DIRECT
+  - DOMAIN-SUFFIX,riotgames.qq.com,DIRECT
+  - DOMAIN-SUFFIX,wegame.com.cn,DIRECT
+  - DOMAIN-SUFFIX,wegame.com,DIRECT
+  - DOMAIN-SUFFIX,taptap.cn,DIRECT
+  - DOMAIN-SUFFIX,taptap.com,DIRECT
+
+  # Education
+  - DOMAIN-SUFFIX,icourse163.org,DIRECT
+  - DOMAIN-SUFFIX,xuetangx.com,DIRECT
+  - DOMAIN-SUFFIX,chaoxing.com,DIRECT
+  - DOMAIN-SUFFIX,mooc.cn,DIRECT
+  - DOMAIN-SUFFIX,cnki.net,DIRECT
+
+  # CDN / cloud / infra
   - DOMAIN-SUFFIX,chinanetcenter.com,DIRECT
   - DOMAIN-SUFFIX,wangsu.com,DIRECT
   - DOMAIN-SUFFIX,chinacache.com,DIRECT
-  - DOMAIN-SUFFIX,doh.pub,DIRECT
-  - DOMAIN-SUFFIX,dns.alidns.com,DIRECT
+  - DOMAIN-SUFFIX,upaiyun.com,DIRECT
+  - DOMAIN-SUFFIX,upyun.com,DIRECT
+  - DOMAIN-SUFFIX,qiniu.com,DIRECT
+  - DOMAIN-SUFFIX,qiniucdn.com,DIRECT
+  - DOMAIN-SUFFIX,cdn20.com,DIRECT
+
+  # China IP
   - GEOIP,CN,DIRECT
+
+  # Default
   - MATCH,节点选择
