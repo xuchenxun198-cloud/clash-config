@@ -195,8 +195,6 @@ rules:
   - DOMAIN-SUFFIX,miui.com,DIRECT
   - DOMAIN-SUFFIX,xiaomi.com,DIRECT
   - DOMAIN-SUFFIX,duokan.com,DIRECT
-
-  # 360 / 搜索门户
   - DOMAIN-SUFFIX,360.cn,DIRECT
   - DOMAIN-SUFFIX,360.com,DIRECT
   - DOMAIN-SUFFIX,360safe.com,DIRECT
@@ -209,8 +207,6 @@ rules:
   - DOMAIN-SUFFIX,sina.com,DIRECT
   - DOMAIN-SUFFIX,weibo.com,DIRECT
   - DOMAIN-SUFFIX,weibocdn.com,DIRECT
-
-  # Content / 社区
   - DOMAIN-SUFFIX,zhihu.com,DIRECT
   - DOMAIN-SUFFIX,zhimg.com,DIRECT
   - DOMAIN-SUFFIX,xiaohongshu.com,DIRECT
@@ -220,9 +216,6 @@ rules:
   - DOMAIN-SUFFIX,oschina.net,DIRECT
   - DOMAIN-SUFFIX,douban.com,DIRECT
   - DOMAIN-SUFFIX,doubanio.com,DIRECT
-
-  # 招聘 / 生活
-  - DOMAIN-SUFFIX,58.com,DIRECT
   - DOMAIN-SUFFIX,ganji.com,DIRECT
   - DOMAIN-SUFFIX,zhipin.com,DIRECT
   - DOMAIN-SUFFIX,liepin.com,DIRECT
@@ -232,9 +225,6 @@ rules:
   - DOMAIN-SUFFIX,meituan.com,DIRECT
   - DOMAIN-SUFFIX,meituan.net,DIRECT
   - DOMAIN-SUFFIX,ele.me,DIRECT
-
-  # Video / Music
-  - DOMAIN-SUFFIX,youku.com,DIRECT
   - DOMAIN-SUFFIX,ykimg.com,DIRECT
   - DOMAIN-SUFFIX,iqiyi.com,DIRECT
   - DOMAIN-SUFFIX,iqiyipic.com,DIRECT
@@ -243,8 +233,6 @@ rules:
   - DOMAIN-SUFFIX,hitv.com,DIRECT
   - DOMAIN-SUFFIX,kugou.com,DIRECT
   - DOMAIN-SUFFIX,kuwo.cn,DIRECT
-
-  # Download / Cloud
   - DOMAIN-SUFFIX,pan.baidu.com,DIRECT
   - DOMAIN-SUFFIX,quark.cn,DIRECT
   - DOMAIN-SUFFIX,uc.cn,DIRECT
@@ -254,8 +242,6 @@ rules:
   - DOMAIN-SUFFIX,ksyun.com,DIRECT
   - DOMAIN-SUFFIX,lanhuapp.com,DIRECT
   - DOMAIN-SUFFIX,processon.com,DIRECT
-
-  # Game / CDN / DNS
   - DOMAIN-SUFFIX,steamchina.com,DIRECT
   - DOMAIN-SUFFIX,perfectworld.com,DIRECT
   - DOMAIN-SUFFIX,chinanetcenter.com,DIRECT
@@ -263,9 +249,5 @@ rules:
   - DOMAIN-SUFFIX,chinacache.com,DIRECT
   - DOMAIN-SUFFIX,doh.pub,DIRECT
   - DOMAIN-SUFFIX,dns.alidns.com,DIRECT
-
-  # China IP
   - GEOIP,CN,DIRECT
-
-  # Default
   - MATCH,节点选择
