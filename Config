@@ -11,6 +11,27 @@ profile:
   store-selected: true
   store-fake-ip: true
 
+proxy-providers:
+  果冻加速:
+    type: http
+    url: "https://din.154641.xyz/s/6940b33681126af625ee16b21201409b"
+    path: ./providers/guodong.yaml
+    interval: 86400
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+
+  Valtrogen:
+    type: http
+    url: "https://api.valconfig.com/sub/?access_key=738486c63b18abc7d693296b1db87104"
+    path: ./providers/valtrogen.yaml
+    interval: 86400
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+
 geodata-mode: true
 geo-auto-update: true
 geo-update-interval: 24
@@ -53,13 +74,18 @@ proxy-groups:
     interval: 300
     tolerance: 50
     include-all: true
+    use:
+      - 果冻加速
+      - Valtrogen
 
   - name: 香港
     type: url-test
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-all: true
+    use:
+      - 果冻加速
+      - Valtrogen
     filter: "(?i)(港|HK|Hong)"
 
   - name: 台湾
@@ -67,7 +93,9 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-all: true
+    use:
+      - 果冻加速
+      - Valtrogen
     filter: "(?i)(台|TW|Tai)"
 
   - name: 日本
@@ -75,7 +103,9 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-all: true
+    use:
+      - 果冻加速
+      - Valtrogen
     filter: "(?i)(日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan)"
 
   - name: 新加坡
@@ -83,7 +113,9 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-all: true
+    use:
+      - 果冻加速
+      - Valtrogen
     filter: "(?i)(新加坡|坡|狮城|SG|Singapore)"
 
   - name: 美国
@@ -91,7 +123,9 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-all: true
+    use:
+      - 果冻加速
+      - Valtrogen
     filter: "(?i)(美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States)"
 
 rules:
